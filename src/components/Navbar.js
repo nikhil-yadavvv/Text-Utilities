@@ -73,9 +73,12 @@ Navbar.propTypes ={
     title : PropTypes.string.isRequired,
     aboutTextUtils : PropTypes.string.isRequired
 };
+//proptype batata hai ki kis type ka prop hona chahiye otherwise error throw krega
+
 
 Navbar.defaultProps = {
     title : "Set title here",
     aboutTextUtils : "About text here"
 };
+//jo prop nahi diya hoga woh default se utha lega
 
