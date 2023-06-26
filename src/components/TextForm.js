@@ -8,6 +8,11 @@ const TextForm = (props) => {
         let newText = text.toUpperCase();
         setText(newText);
     };
+    const handlelowercase = () =>{
+        // console.log("Uppercase"+ text);
+        let newText = text.toLowerCase();
+        setText(newText);
+    };
 
     const handleOnChange = (event) =>{
         // console.log("Onchange");
@@ -21,14 +26,28 @@ const TextForm = (props) => {
     // setText("anything here");
 
 
-    return <div>
+    return (
+    <>
+    <div className='container1'>
     <h1>{props.heading}</h1>
     <div className="mb-3">
     {/* <label for="mybox" calssName="form-label">Example textarea</label> */}
     <textarea className="form-control" value={text} onChange={handleOnChange} id="mybox" rows="8"></textarea>
     </div>
-    <button className = "btn btn-primary" onClick={handleuppercase}>Convert to UpperCase</button>
-    </div>;
+    <button className = "btn btn-primary mx-1" onClick={handleuppercase}>Convert to Upper Case</button>
+    <button className = "btn btn-primary mx-1" onClick={handlelowercase}>Convert to Lower Case</button>
+    </div>
+    <br/>
+    <div className='container2'>
+        <h1>Text Summary</h1>
+        <p>{text.split(" ").length} words and {text.length} characters</p>
+        <p>Takes {text.split(" ").length* 0.008} minutes to read</p>
+        <h2>Text Preview</h2>
+        <p>{text}</p>
+
+    </div>
+    </>
+    )
 }
 
 
