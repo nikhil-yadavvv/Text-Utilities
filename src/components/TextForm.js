@@ -3,11 +3,13 @@ import React ,{useState} from 'react';
 //handeling event nad set state
 
 const TextForm = (props) => {
+
     const handleuppercase = () =>{
         // console.log("Uppercase"+ text);
         let newText = text.toUpperCase();
         setText(newText);
     };
+
     const handlelowercase = () =>{
         // console.log("Uppercase"+ text);
         let newText = text.toLowerCase();
@@ -19,6 +21,27 @@ const TextForm = (props) => {
         setText(event.target.value); 
     };
     //onchange lagate hi saare error chale gaye
+
+    const handleClear = () =>{
+        let newText = "";
+        setText(newText)
+    };
+
+    //not working
+    const handleCopy = () =>{
+        var newText = document.getElementById("myBox");
+        newText.select();
+        navigator.clipboard.writeText(newText.value);
+
+    };
+    const handleExtraSpaces = () =>{
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "));
+    };
+
+
+
+
 
     const [text, setText] = useState("Enter text here...");//it will go to text
     //to update text use setText
@@ -32,10 +55,13 @@ const TextForm = (props) => {
     <h1>{props.heading}</h1>
     <div className="mb-3">
     {/* <label for="mybox" calssName="form-label">Example textarea</label> */}
-    <textarea className="form-control" value={text} onChange={handleOnChange} id="mybox" rows="8"></textarea>
+    <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
     </div>
     <button className = "btn btn-primary mx-1" onClick={handleuppercase}>Convert to Upper Case</button>
     <button className = "btn btn-primary mx-1" onClick={handlelowercase}>Convert to Lower Case</button>
+    <button className = "btn btn-primary mx-1" onClick={handleClear}>Clear Text</button>
+    <button className = "btn btn-primary mx-1" onClick={handleCopy}>Copy Text</button>
+    <button className = "btn btn-primary mx-1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
     </div>
     <br/>
     <div className='container2'>
