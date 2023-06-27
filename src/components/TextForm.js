@@ -34,6 +34,7 @@ const TextForm = (props) => {
         navigator.clipboard.writeText(newText.value);
 
     };
+
     const handleExtraSpaces = () =>{
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "));
@@ -43,7 +44,7 @@ const TextForm = (props) => {
 
 
 
-    const [text, setText] = useState("Enter text here...");//it will go to text
+    const [text, setText] = useState("");//it will go to text
     //to update text use setText
     //text = "sdfsfds"   not correct instead use this to update
     // setText("anything here");
@@ -55,7 +56,7 @@ const TextForm = (props) => {
     <h1>{props.heading}</h1>
     <div className="mb-3">
     {/* <label for="mybox" calssName="form-label">Example textarea</label> */}
-    <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
+    <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor : props.mode ==='light' ?'white' :'grey' , color: props.mode==='dark'?'white':'black'}} id="myBox" rows="8"></textarea>
     </div>
     <button className = "btn btn-primary mx-1" onClick={handleuppercase}>Convert to Upper Case</button>
     <button className = "btn btn-primary mx-1" onClick={handlelowercase}>Convert to Lower Case</button>
